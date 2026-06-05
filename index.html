@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Đinh Thị Tâm Như</title>
+    <!-- Font chữ cute, bo tròn -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* TỔNG THỂ GIAO DIỆN CUTE & PASTEL */
+        :root {
+            --bg-color: #fff9fc;
+            --primary: #ffb6c1; /* Pink pastel */
+            --secondary: #a2c2e1; /* Blue pastel */
+            --text-main: #4a4a4a;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* STICKER HOẠT HOẠ (Hiệu ứng bay lơ lửng) */
+        .sticker {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+            z-index: 0;
+            opacity: 0.8;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .s1 { top: 10%; left: 5%; }
+        .s2 { top: 20%; right: 10%; font-size: 3rem; }
+        .s3 { top: 60%; left: 8%; }
+
+        /* THANH ĐIỀU HƯỚNG (NAVBAR) */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.2);
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 800;
+            margin: 0 20px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--primary); }
+
+        /* BỐ CỤC CHUNG */
+        .container {
+            max-width: 900px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* SECTION GIỚI THIỆU (HOME) */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+        }
+        .hero img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--primary);
+            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.4);
+        }
+        .hero-text h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .hero-text p { font-size: 1.1rem; }
+
+        /* THẺ DỰ ÁN (PROJECT CARDS) */
+        .project-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            margin-bottom: 40px;
+            border-top: 5px solid var(--primary);
+            transition: transform 0.3s;
+        }
+        .project-card:hover { transform: translateY(-5px); }
+        .project-card h2 { color: var(--secondary); margin-top: 0; }
+
+        /* TÍNH NĂNG KÉO NGANG ẢNH (HORIZONTAL SCROLL) */
+        .scroll-gallery {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding-bottom: 15px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) #f0f0f0;
+        }
+        .scroll-gallery::-webkit-scrollbar { height: 8px; }
+        .scroll-gallery::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+        
+        .scroll-gallery img {
+            scroll-snap-align: start;
+            height: 250px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            object-fit: contain;
+            background: #fdfdfd;
+        }
+
+        /* NÚT TRUY CẬP NHANH (CTA BUTTON) */
+        .btn-cta {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #fff !important;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 154, 158, 0.6);
+        }
+
+        /* BẢNG (TABLE) */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #eee;
+            text-align: left;
+        }
+        th { background-color: #fce4ec; color: var(--text-main); }
+    </style>
+</head>
+<body>
+
+    <!-- Stickers trang trí -->
+    <div class="sticker s1">🌸</div>
+    <div class="sticker s2">✨</div>
+    <div class="sticker s3">🎨</div>
+
+    <!-- Thanh menu -->
+    <nav>
+        <a href="#gioi-thieu">Giới Thiệu</a>
+        <a href="#du-an">Danh Mục Dự Án</a>
+        <a href="#tong-ket">Tổng Kết</a>
+    </nav>
+
+    <div class="container">
+        
+        <!-- TRANG GIỚI THIỆU -->
+        <section id="gioi-thieu" class="hero">
+            <!-- Thay bằng ảnh đã tách nền của bạn -->
+            <img src="Aboutme3_removebg.png" alt="Đinh Thị Tâm Như">
+            <div class="hero-text">
+                <h1>Hello, tớ là Tâm Như! 👋</h1>
+                <p><strong>MSSV:</strong> 24090427 | <strong>Khoa:</strong> Công nghiệp văn hoá và di sản (VNU-SIS)</p>
+                <p>Chào mừng đến với không gian lưu trữ số của mình. Portfolio này được thiết lập để minh chứng hóa quá trình vận dụng công nghệ thông tin và AI tạo sinh vào nghiên cứu khoa học, đặc biệt trong lĩnh vực lý thuyết tài sản thương hiệu điểm đến và quản trị văn hóa.</p>
+            </div>
+        </section>
+
+        <!-- TRANG DỰ ÁN -->
+        <h1 id="du-an" style="text-align: center; color: var(--text-main); margin: 50px 0;">📂 Các Dự Án Thực Hành</h1>
+
+        <!-- DỰ ÁN 1 -->
+        <div class="project-card">
+            <h2>📌 DỰ ÁN 1: Quản trị Tài nguyên Số (macOS)</h2>
+            <p><strong>Mục tiêu:</strong> Tối ưu hóa không gian lưu trữ tài liệu nghiên cứu trên hệ điều hành macOS nhằm đẩy nhanh tốc độ truy xuất dữ liệu.</p>
+            <p><strong>Quá trình & Kết quả:</strong> Thiết lập cấu trúc thư mục phân cấp 3 tầng logic, chuẩn hóa quy tắc đặt tên tệp tin không dấu. Giảm thiểu 100% tình trạng thất lạc tài liệu.</p>
+            
+            <a href="https://drive.google.com/file/d/1qfp0-jVHHbRLik5Ok_KdFq--jl_LpauH/view?usp=drivesdk" target="_blank" class="btn-cta">☁️ Truy cập nhanh báo cáo</a>
+
+            <h4 style="margin-top: 20px;">🖼️ Minh chứng thao tác (Kéo ngang để xem):</h4>
+            <div class="scroll-gallery">
+                <img src="Ket qua bai 1.png" alt="Kết quả bài 1">
+                <!-- Thêm các ảnh thao tác macos khác nếu có -->
+            </div>
+        </div>
+
+        <!-- DỰ ÁN 2 -->
+        <div class="project-card">
+            <h2>📌 DỰ ÁN 2: Thẩm định Dữ liệu Học thuật & Khung Trích dẫn</h2>
+            <p><strong>Mục tiêu:</strong> Khai thác và thẩm định chất lượng dữ liệu học thuật trên môi trường số phục vụ cho đề tài "Nghiên cứu sức ảnh hưởng của độ nhận diện tới sức hút du lịch".</p>
+            <p><strong>Quá trình:</strong> Vận dụng hệ toán tử tìm kiếm nâng cao (AND, OR, site:, filetype:). Áp dụng chuẩn đánh giá CRAAP để phân tích 10 nguồn tài liệu quốc tế theo chuẩn APA 7th edition.</p>
+            
+            <a href="https://drive.google.com/file/d/1x08WwFu9i4Jz4_CiRcNfTLMAfQuYKVtH/view?usp=drivesdk" target="_blank" class="btn-cta">☁️ Truy cập nhanh báo cáo</a>
+
+            <h4 style="margin-top: 20px;">📊 Bảng Xếp hạng Độ tin cậy (CRAAP):</h4>
+            <table>
+                <tr>
+                    <th>Hạng</th>
+                    <th>Tên tài liệu (Nguồn)</th>
+                    <th>Đánh giá giá trị ứng dụng</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Does world heritage list really induce more tourists? (2012)</td>
+                    <td>Cung cấp mô hình kinh tế lượng siêu nghiêm ngặt chứng minh tác động của danh hiệu UNESCO.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>The Overlooked Contribution of National Heritage... (2022)</td>
+                    <td>So sánh trực tiếp giá trị của danh hiệu Di sản Quốc gia đối với việc định vị hình ảnh thành phố.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- DỰ ÁN 3 -->
+        <div class="project-card">
+            <h2>📌 DỰ ÁN 3: Tối ưu hóa Kỹ nghệ Câu lệnh (Prompt Engineering)</h2>
+            <p><strong>Mục tiêu:</strong> Cải thiện chất lượng phân tích văn bản của AI, hạn chế hiện tượng ảo giác (hallucination) khi xử lý các học thuyết phức tạp.</p>
+            <p><strong>Quá trình & Kết quả:</strong> Áp dụng hệ thống câu lệnh phân tầng: <em>Role Prompting</em> và <em>Chain-of-thought</em>. Rút gọn 60% thời gian xử lý dữ liệu thô, chuyển đổi văn bản với độ chính xác học thuật cao.</p>
+            
+            <a href="https://drive.google.com/file/d/1Y6ki1D-mFVx_dOPCxODBBQ-70d0vO9_E/view?usp=drivesdk" target="_blank" class="btn-cta">☁️ Truy cập nhanh báo cáo</a>
+
+            <h4 style="margin-top: 20px;">🖼️ So sánh AI Output (Kéo ngang để xem Before/After):</h4>
+            <div class="scroll-gallery">
+                <img src="Promt cơ bản.png" alt="Prompt cơ bản">
+                <img src="Promt cải tiến.png" alt="Prompt cải tiến">
+                <img src="promt nâng cao.png" alt="Prompt nâng cao">
+            </div>
+        </div>
+
+        <!-- DỰ ÁN 4 -->
+        <div class="project-card">
+            <h2>📌 DỰ ÁN 4: Quản trị Dự án Hợp tác Trực tuyến</h2>
+            <p><strong>Mục tiêu:</strong> Điều phối dự án nhóm trong điều kiện làm việc từ xa.</p>
+            <p><strong>Quá trình & Kết quả:</strong> Đồng bộ hóa hệ sinh thái Google Workspace và Messenger. Sử dụng <em>Document Outline</em> phân vùng quyền chỉnh sửa nội dung, kết hợp ghim tiến độ khắt khe. Tỷ lệ đè lấp dữ liệu được kiểm soát ở mức 0%.</p>
+            
+            <a href="https://drive.google.com/file/d/1WA6YEKNzMJBgCLE7KAg3F9LJiFSd3xKD/view?usp=drivesdk" target="_blank" class="btn-cta">☁️ Truy cập nhanh báo cáo</a>
+
+                        <h4 style="margin-top: 20px;">🖼️ Tiến trình làm việc nhóm (Kéo ngang):</h4>
+            <div class="scroll-gallery">
+                <img src="Hình 1.png" alt="Hình 1">
+                <img src="Hình 2.png" alt="Hình 2">
+                <img src="Hình 2.1.png" alt="Hình 2.1">
+                <img src="Hình 2.2.png" alt="Hình 2.2">
+                <img src="Hình 2.4.png" alt="Hình 2.4">
+                <img src="Hình 3.png" alt="Hình 3">
+                <img src="Hình 4.png" alt="Hình 4">
+                <img src="Hình 4.1.png" alt="Hình 4.1">
+                <img src="Hình 5.png" alt="Hình 5">
+            </div>
+        </div>
+
+        <!-- DỰ ÁN 5 -->
+        <div class="project-card">
+            <h2>📌 DỰ ÁN 5: Sáng tạo Nội dung Số & Thiết kế Ấn phẩm</h2>
+            <p><strong>Mục tiêu:</strong> Sản xuất kịch bản bài thuyết trình học thuật (12 slide) đánh giá tác động của AI đối với bản quyền nghệ thuật.</p>
+            <p><strong>Quá trình:</strong> Khai thác chuỗi AI: NotebookLM (trích xuất) -> ChatGPT (cấu trúc) -> Gemini (tối giản hiển thị). Can thiệp thủ công làm sạch watermark và lỗi thị giác.</p>
+            
+            <a href="https://drive.google.com/file/d/1SLzU4b2TzgbHsUM3uSvfr2w4shoBaZfP/view?usp=drivesdk" target="_blank" class="btn-cta">☁️ Truy cập nhanh báo cáo</a>
+
+                       <h4 style="margin-top: 20px;">🖼️ Ấn phẩm Final (Human) vs AI Draft (Kéo ngang ngắm slide):</h4>
+            <div class="scroll-gallery">
+                <img src="Slide human 1.png" alt="Slide Human 1">
+                <img src="Slide AI 1.png" alt="Slide AI 1">
+                
+                <img src="Slide human 2.png" alt="Slide Human 2">
+                <img src="Slide AI 2.png" alt="Slide AI 2">
+                
+                <img src="Slide human 3.png" alt="Slide Human 3">
+                <img src="Slide AI 3.png" alt="Slide AI 3">
+                
+                <img src="Slide human 4.png" alt="Slide Human 4">
+                <img src="Slide AI 4.png" alt="Slide AI 4">
+                
+                <img src="Slide human 5.png" alt="Slide Human 5">
+                <img src="Slide AI 5.png" alt="Slide AI 5">
+                
+                <img src="Slide human 6.png" alt="Slide Human 6">
+                <img src="Slide AI 6.png" alt="Slide AI 6">
+                
+                <img src="Slide human 7.png" alt="Slide Human 7">
+                <img src="Slide AI 7.png" alt="Slide AI 7">
+                
+                <img src="Slide human 8.png" alt="Slide Human 8">
+                <img src="Slide AI 8.png" alt="Slide AI 8">
+                
+                <img src="Slide human 9.png" alt="Slide Human 9">
+                <img src="Slide AI 9.png" alt="Slide AI 9"> 
+              
+                <img src="Slide human 10.png" alt="Slide Human 10">
+                <img src="Slide AI 10.png" alt="Slide AI 10">
+            
+                <img src="Slide human 11.png" alt="Slide Human 11">
+                <img src="Slide AI 11.png" alt="Slide AI 11">
+         
+                <img src="Slide human 12.png" alt="Slide Human 12">
+                <img src="Slide AI 12.png" alt="Slide AI 12">
+            
+              <img src="Slide human 13.png" alt="Slide Human 13">
+            </div>
+        </div>
+
+        <!-- DỰ ÁN 6 -->
+        <div class="project-card">
+            <h2>📌 DỰ ÁN 6: Khung Đạo đức Trí tuệ Nhân tạo</h2>
+            <p><strong>Mục tiêu:</strong> Xây dựng bộ quy tắc ứng xử chuẩn mực khi ứng dụng công nghệ trong học thuật nhằm bảo vệ tính liêm chính.</p>
+            <p><strong>Kết quả:</strong> Thiết lập thành công "Bộ 5 nguyên tắc sử dụng AI" cá nhân (Làm chủ, Hoài nghi học thuật, Minh bạch hóa, Đóng góp vượt trội, Tôn trọng bản quyền).</p>
+            
+            <a href="https://drive.google.com/file/d/1xGboCN93GHkdJWaR614FW83sdX8D7KAw/view?usp=drivesdk" target="_blank" class="btn-cta">☁️ Truy cập nhanh báo cáo</a>
+
+            <h4 style="margin-top: 20px;">🖼️ Infographic Quy chuẩn Ứng xử (Kéo ngang):</h4>
+            <div class="scroll-gallery">
+                <img src="Inforgraphic.png" alt="Infographic đạo đức AI">
+            </div>
+        </div>
+      <!-- DỰ ÁN 7 -->
+        <div class="project-card">
+            <h2>📌 DỰ ÁN 7: Dùng LLM Phân tích Mâu thuẫn Xã hội (Case Study Thời sự)</h2>
+            <p><strong>Mục tiêu:</strong> Ứng dụng mô hình ngôn ngữ lớn để bóc tách thông tin đa chiều từ các luồng quan điểm báo chí đối lập về việc quy hoạch đất đai.</p>
+            
+            <p><strong>Nguồn tài liệu phân tích:</strong></p>
+            <ul>
+                <li><a href="ĐIỀN_LINK_BÀI_BÁO_LUẬT_KHOA_VÀO_ĐÂY" target="_blank" style="color: #ff9a9e; font-weight: bold; text-decoration: none;">🔗 Bài báo 1: Luật Khoa Tạp chí</a></li>
+                <li><a href="ĐIỀN_LINK_BÀI_BÁO_BOXIT_VÀO_ĐÂY" target="_blank" style="color: #a2c2e1; font-weight: bold; text-decoration: none;">🔗 Bài báo 2: Boxit Việt Nam</a></li>
+            </ul>
+
+            <p><strong>Quá trình & Kết quả:</strong> Triển khai LLM phân tích 2 nguồn báo chí để lập mô hình xung đột 3 bên. Hệ thống hóa thành công 4 lớp "chi phí xã hội vô hình" (đứt gãy văn hóa, mất sinh kế, bất bình đẳng không gian, suy thoái môi trường), cung cấp nền tảng vững chắc để phản biện các chính sách quy hoạch di sản cực đoan.</p>
+            
+            <a href="ĐIỀN_LINK_DRIVE_BÁO_CÁO_7_VÀO_ĐÂY" target="_blank" class="btn-cta">☁️ Truy cập nhanh báo cáo</a>
+
+            <h4 style="margin-top: 25px;">📊 Bảng phân tích lăng kính tiếp cận báo chí:</h4>
+            <p style="font-size: 0.95rem; font-style: italic; color: #666;">Mặc dù cùng phê phán hệ lụy của việc lạm dụng quỹ đất cho dự án giải trí xa xỉ, hai bài báo lại có sự phân hóa rõ rệt về lăng kính tiếp cận:</p>
+            
+            <table>
+                <tr>
+                    <th style="width: 20%;">Tiêu chí so sánh</th>
+                    <th style="width: 40%;">Bài báo 1: Luật Khoa Tạp chí</th>
+                    <th style="width: 40%;">Bài báo 2: Boxit Việt Nam</th>
+                </tr>
+                <tr>
+                    <td><strong>Lăng kính tiếp cận chủ đạo</strong></td>
+                    <td>Nhân văn, Văn hóa và Tâm linh. Tập trung vào chiều sâu cảm xúc, danh dự và "phần hồn" của đời sống làng xã.</td>
+                    <td>Kinh tế chính trị và Quy hoạch. Tập trung vào cơ chế vận hành của dòng vốn, chính sách đất đai và lợi ích nhóm.</td>
+                </tr>
+                <tr>
+                    <td><strong>Tiêu điểm phân tích hệ lụy</strong></td>
+                    <td>Nhấn mạnh việc di dời mồ mả tổ tiên làm rạn nứt đứt gãy căn tính văn hóa, lòng tự trọng và quyền tâm linh thiêng liêng của người dân.</td>
+                    <td>Nhấn mạnh sự xung đột giữa dự án giải trí cao cấp với không gian sinh sống, tư liệu sản xuất và sinh kế hằng ngày của khu dân cư.</td>
+                </tr>
+                <tr>
+                    <td><strong>Cách thức lập luận</strong></td>
+                    <td>Sử dụng tư duy triết học xã hội để định lượng các "chi phí xã hội vô hình" – những thứ không thể bù đắp bằng tiền đền bù.</td>
+                    <td>Sử dụng tư duy phân tích chính sách để vạch trần việc mượn danh nghĩa "phát triển kinh tế" để hợp thức hóa bất động sản núp bóng sân golf.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- TRANG TỔNG KẾT -->
+        <section id="tong-ket" class="project-card" style="background: linear-gradient(to right bottom, #ffffff, #fff0f5);">
+            <h1 style="color: var(--primary); text-align: center;">🌱 Đúc Kết Hành Trình</h1>
+            
+            <h3>1. Đánh giá Năng lực Kỹ thuật</h3>
+            <p>Quá trình tham gia học phần đã chuyển dịch hoàn toàn phương pháp làm việc của tôi từ trạng thái khai thác thụ động sang quản trị hệ thống chủ động. Các công cụ AI không còn là cỗ máy tra cứu tĩnh, mà đã trở thành nền tảng xử lý dữ liệu ngôn ngữ quy mô lớn. Năng lực cốt lõi đạt được bao gồm việc làm chủ kỹ thuật Prompt Engineering phức hợp, khả năng thẩm định cấu trúc học thuật và vận hành quy trình số hóa tài liệu tuân thủ chuẩn mực trích dẫn quốc tế.</p>
+            
+            <h3>2. Định hướng Ứng dụng & Phát triển</h3>
+            <p>Thách thức cốt lõi trong kỷ nguyên số không nằm ở việc vận hành công cụ, mà ở việc duy trì tính logic, tính khách quan tuyệt đối và sự nhất quán khoa học. Trong thời gian tới, hệ thống kỹ năng này sẽ được tôi tích hợp trực tiếp vào quy trình nghiên cứu định lượng (sử dụng SPSS/Jamovi) để đo lường nhận thức thương hiệu điểm đến, đóng góp vào chiến lược bảo tồn di sản và quy hoạch Công nghiệp Văn hóa bền vững.</p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <p><em>"Cảm ơn thầy/cô đã dành thời gian xem qua Portfolio của em!"</em> 💖</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Script tạo hiệu ứng cuộn mượt (Smooth Scroll) cho Navbar -->
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
