@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Đinh Thị Tâm Như</title>
+    <!-- Font chữ Nunito -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
-        /* TỔNG THỂ GIAO DIỆN CYBER-CUTE (COOL NGẦU + ĐÁNG YÊU) */
+        /* TỔNG THỂ GIAO DIỆN CYBER-CUTE */
         :root {
-            --bg-color: #0d1117; /* Xanh đen không gian Github */
-            --primary: #00f2fe; /* Xanh Neon công nghệ */
-            --secondary: #fe0979; /* Hồng Neon cá tính */
-            --text-main: #e6edf3; /* Trắng xám dễ nhìn */
-            --card-bg: rgba(22, 27, 34, 0.8); /* Nền kính mờ */
+            --bg-color: #0d1117; 
+            --primary: #00f2fe; 
+            --secondary: #fe0979; 
+            --text-main: #e6edf3; 
+            --card-bg: rgba(22, 27, 34, 0.8); 
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
@@ -46,7 +47,7 @@
         .s3 { top: 70%; left: 8%; }
         .s4 { bottom: 10%; right: 5%; font-size: 2rem; }
 
-        /* THANH ĐIỀU HƯỚNG GLASSMORPHISM */
+        /* THANH ĐIỀU HƯỚNG */
         nav {
             background: rgba(13, 17, 23, 0.85);
             backdrop-filter: blur(12px);
@@ -84,7 +85,7 @@
             z-index: 1;
         }
 
-        /* SECTION GIỚI THIỆU (COOL + CUTE) */
+        /* SECTION GIỚI THIỆU (CÓ THÊM ẢNH) */
         .hero {
             display: flex;
             align-items: center;
@@ -97,16 +98,42 @@
             box-shadow: 0 0 30px rgba(0, 242, 254, 0.1);
             margin-bottom: 60px;
         }
-        .hero img {
+        
+        .hero-img-container {
+            position: relative;
             width: 260px;
             height: 260px;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 30%; /* Bo góc cyber-cute */
+            border-radius: 30%; 
             border: 4px solid transparent;
             background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
                         linear-gradient(135deg, var(--primary), var(--secondary)) border-box;
             box-shadow: 0 0 25px rgba(254, 9, 121, 0.3);
+            position: relative;
+            z-index: 2;
         }
+
+        /* Ảnh nhỏ cute bay bên cạnh ảnh chính */
+        .cute-floating-img {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            bottom: -20px;
+            right: -30px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            z-index: 3;
+            animation: float 5s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            object-fit: cover;
+            background-color: #1a202c;
+        }
+
         .hero-text h1 {
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
@@ -145,7 +172,7 @@
             margin-top: 0; 
             text-shadow: 0 0 10px rgba(255,255,255,0.2);
         }
-        .project-card h4 { color: var(--primary); }
+        .project-card h4 { color: var(--primary); margin-bottom: 10px;}
 
         /* TÍNH NĂNG KÉO NGANG ẢNH HIỆN ĐẠI */
         .scroll-gallery {
@@ -218,34 +245,61 @@
         }
         tr:hover { background: rgba(0, 242, 254, 0.05); }
 
+        /* KHUNG REFLECTION KẾT HỢP ẢNH TÁCH NỀN */
+        .reflection-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .reflection-content {
+            flex: 1;
+        }
+        .reflection-img {
+            width: 200px;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(0, 242, 254, 0.3));
+            animation: float 4s ease-in-out infinite;
+        }
+
     </style>
 </head>
 <body>
 
+    <!-- Stickers Công Nghệ -->
     <div class="sticker s1">🤖</div>
     <div class="sticker s2">💻</div>
     <div class="sticker s3">⚡</div>
     <div class="sticker s4">👾</div>
 
+    <!-- Thanh menu -->
     <nav>
-        <a href="#gioi-thieu">Profile</a>
-        <a href="#du-an">Projects</a>
-        <a href="#tong-ket">Reflection</a>
+        <a href="#gioi-thieu">PROFILE</a>
+        <a href="#du-an">PROJECTS</a>
+        <a href="#tong-ket">REFLECTION</a>
     </nav>
 
     <div class="container">
         
+        <!-- TRANG GIỚI THIỆU -->
         <section id="gioi-thieu" class="hero">
-            <img src="Aboutme1.PNG" alt="Đinh Thị Tâm Như">
+            <div class="hero-img-container">
+                <!-- File name chính xác 100% từ Github Repo của bà -->
+                <img src="Aboutme1_removebg.PNG" alt="Đinh Thị Tâm Như">
+                <!-- Chèn thêm ảnh nhỏ lơ lửng cute -->
+                <img src="Aboume3_removebg.PNG" alt="Cute pic" class="cute-floating-img">
+            </div>
+            
             <div class="hero-text">
                 <h1>Hello, I'm Tâm Như! 🚀</h1>
                 <p><strong>MSSV:</strong> 24090427 | <strong>Khoa:</strong> Công nghiệp văn hoá và di sản (VNU-SIS)</p>
-                <p>Chào mừng đến với hệ thống lưu trữ số của Tâm Như. Nơi đây vạch ra lộ trình minh chứng hóa quá trình vận dụng công nghệ thông tin và AI tạo sinh vào nghiên cứu khoa học, đặc biệt trong việc phân tích lý thuyết tài sản thương hiệu điểm đến và quản trị văn hóa.</p>
+                <p>Chào mừng đến với hệ thống lưu trữ số của mình. Nơi đây vạch ra lộ trình minh chứng hóa quá trình vận dụng công nghệ thông tin và AI tạo sinh vào nghiên cứu khoa học, đặc biệt trong việc phân tích lý thuyết tài sản thương hiệu điểm đến và quản trị văn hóa.</p>
             </div>
         </section>
 
+        <!-- TRANG DỰ ÁN -->
         <h1 id="du-an" style="text-align: center; color: var(--primary); margin: 60px 0; font-size: 2.5rem; text-shadow: 0 0 15px rgba(0,242,254,0.3);">📂 SYSTEM LOG: PROJECTS</h1>
 
+        <!-- DỰ ÁN 1 -->
         <div class="project-card">
             <h2>📌 DỰ ÁN 1: Quản trị Tài nguyên Số (macOS)</h2>
             <p><strong>Mục tiêu:</strong> Tối ưu hóa không gian lưu trữ tài liệu nghiên cứu trên hệ điều hành macOS nhằm đẩy nhanh tốc độ truy xuất dữ liệu.</p>
@@ -255,10 +309,12 @@
             
             <h4 style="margin-top: 25px;">🖼️ Output Visualization (Kéo ngang):</h4>
             <div class="scroll-gallery">
-                <img src="Ket qua bai 1.PNG" alt="Kết quả bài 1">
+                <!-- Tên file chính xác .jpg -->
+                <img src="Ket qua bai 1.jpg" alt="Kết quả bài 1">
             </div>
         </div>
 
+        <!-- DỰ ÁN 2 -->
         <div class="project-card">
             <h2>📌 DỰ ÁN 2: Thẩm định Dữ liệu Học thuật & Khung Trích dẫn</h2>
             <p><strong>Mục tiêu:</strong> Khai thác và thẩm định chất lượng dữ liệu học thuật trên môi trường số phục vụ cho đề tài "Nghiên cứu sức ảnh hưởng của độ nhận diện tới sức hút du lịch".</p>
@@ -286,6 +342,7 @@
             </table>
         </div>
 
+        <!-- DỰ ÁN 3 -->
         <div class="project-card">
             <h2>📌 DỰ ÁN 3: Tối ưu hóa Kỹ nghệ Câu lệnh (Prompt Engineering)</h2>
             <p><strong>Mục tiêu:</strong> Cải thiện chất lượng phân tích văn bản của AI, hạn chế ảo giác (hallucination) qua kỹ thuật <em>Role Prompting</em> và <em>Chain-of-thought</em>.</p>
@@ -294,12 +351,14 @@
             
             <h4 style="margin-top: 25px;">🖼️ Output Visualization (Kéo ngang):</h4>
             <div class="scroll-gallery">
-                <img src="Promt cơ bản.PNG" alt="Prompt cơ bản">
-                <img src="Promt cài tiến.PNG" alt="Prompt cải tiến">
-                <img src="promt nâng cao.PNG" alt="Prompt nâng cao">
+                <!-- Tên file chính xác .jpg -->
+                <img src="Promt cơ bản.jpg" alt="Prompt cơ bản">
+                <img src="Promt cài tiến.jpg" alt="Prompt cải tiến">
+                <img src="promt nâng cao.jpg" alt="Prompt nâng cao">
             </div>
         </div>
 
+        <!-- DỰ ÁN 4 -->
         <div class="project-card">
             <h2>📌 DỰ ÁN 4: Quản trị Dự án Hợp tác Trực tuyến</h2>
             <p><strong>Mục tiêu:</strong> Đồng bộ hệ sinh thái Google Workspace và Messenger để quản lý dự án nhóm từ xa, sử dụng <em>Document Outline</em> chống đè lấp dữ liệu.</p>
@@ -308,18 +367,20 @@
             
             <h4 style="margin-top: 25px;">🖼️ Workflow System (Kéo ngang):</h4>
             <div class="scroll-gallery">
-                <img src="Hình 1.PNG" alt="Hình 1">
-                <img src="Hình 2.PNG" alt="Hình 2">
-                <img src="Hình 2.1.PNG" alt="Hình 2.1">
-                <img src="Hình 2.2.PNG" alt="Hình 2.2">
-                <img src="Hình 2.4.PNG" alt="Hình 2.4">
-                <img src="Hình 3.PNG" alt="Hình 3">
-                <img src="Hình 4.PNG" alt="Hình 4">
-                <img src="Hình 4.1.PNG" alt="Hình 4.1">
-                <img src="Hình 5.PNG" alt="Hình 5">
+                <!-- Tên file chính xác .jpg và HÌnh 2.4.jpg có chữ Ì -->
+                <img src="Hình 1.jpg" alt="Hình 1">
+                <img src="Hình 2.jpg" alt="Hình 2">
+                <img src="Hình 2.1.jpg" alt="Hình 2.1">
+                <img src="Hình 2.2.jpg" alt="Hình 2.2">
+                <img src="HÌnh 2.4.jpg" alt="Hình 2.4">
+                <img src="Hình 3.jpg" alt="Hình 3">
+                <img src="Hình 4.jpg" alt="Hình 4">
+                <img src="Hình 4.1.jpg" alt="Hình 4.1">
+                <img src="Hình 5.jpg" alt="Hình 5">
             </div>
         </div>
 
+        <!-- DỰ ÁN 5 -->
         <div class="project-card">
             <h2>📌 DỰ ÁN 5: Sáng tạo Nội dung Số & Thiết kế Ấn phẩm</h2>
             <p><strong>Mục tiêu:</strong> Sản xuất kịch bản 12 slide đánh giá AI. Khai thác chuỗi: NotebookLM -> ChatGPT -> Gemini. Can thiệp thủ công làm sạch watermark do AI tạo ra.</p>
@@ -328,38 +389,41 @@
 
             <h4 style="margin-top: 25px; color: var(--secondary);">🤖 BEFORE: Bản nháp thô từ AI (AI Draft)</h4>
             <div class="scroll-gallery" style="border-bottom: 2px dashed rgba(255,255,255,0.1); padding-bottom: 25px;">
+                <!-- Slide AI 1 là .PNG, còn lại là .jpg -->
                 <img src="Slide AI 1.PNG" alt="Slide AI 1">
-                <img src="Slide AI 2.PNG" alt="Slide AI 2">
-                <img src="Slide AI 3.PNG" alt="Slide AI 3">
-                <img src="Slide AI 4.PNG" alt="Slide AI 4">
-                <img src="Slide AI 5.PNG" alt="Slide AI 5">
-                <img src="Slide AI 6.PNG" alt="Slide AI 6">
-                <img src="Slide AI 7.PNG" alt="Slide AI 7">
-                <img src="Slide AI 8.PNG" alt="Slide AI 8">
-                <img src="Slide AI 9.PNG" alt="Slide AI 9">
-                <img src="Slide AI 10.PNG" alt="Slide AI 10">
-                <img src="Slide AI 11.PNG" alt="Slide AI 11">
-                <img src="Slide AI 12.PNG" alt="Slide AI 12">
+                <img src="Slide AI 2.jpg" alt="Slide AI 2">
+                <img src="Slide AI 3.jpg" alt="Slide AI 3">
+                <img src="Slide AI 4.jpg" alt="Slide AI 4">
+                <img src="Slide AI 5.jpg" alt="Slide AI 5">
+                <img src="Slide AI 6.jpg" alt="Slide AI 6">
+                <img src="Slide AI 7.jpg" alt="Slide AI 7">
+                <img src="Slide AI 8.jpg" alt="Slide AI 8">
+                <img src="Slide AI 9.jpg" alt="Slide AI 9">
+                <img src="Slide AI 10.jpg" alt="Slide AI 10">
+                <img src="Slide AI 11.jpg" alt="Slide AI 11">
+                <img src="Slide AI 12.jpg" alt="Slide AI 12">
             </div>
 
             <h4 style="margin-top: 20px; color: var(--primary);">✨ AFTER: Bản hoàn thiện đã tinh chỉnh kỹ lưỡng (Human Final)</h4>
             <div class="scroll-gallery">
-                <img src="Slide human 1.PNG" alt="Slide Human 1">
-                <img src="Slide human 2.PNG" alt="Slide Human 2">
-                <img src="Slide human 3.PNG" alt="Slide Human 3">
-                <img src="Slide human 4.PNG" alt="Slide Human 4">
-                <img src="Slide human 5.PNG" alt="Slide Human 5">
-                <img src="Slide human 6.PNG" alt="Slide Human 6">
-                <img src="Slide human 7.PNG" alt="Slide Human 7">
-                <img src="Slide human 8.PNG" alt="Slide Human 8">
-                <img src="Slide human 9.PNG" alt="Slide Human 9">
-                <img src="Slide human 10.PNG" alt="Slide Human 10">
-                <img src="Slide human 11.PNG" alt="Slide Human 11">
-                <img src="Slide human 12.PNG" alt="Slide Human 12">
-                <img src="Slide human 13.PNG" alt="Slide Human 13">
+                <!-- Toàn bộ Human slide là .jpg -->
+                <img src="Slide human 1.jpg" alt="Slide Human 1">
+                <img src="Slide human 2.jpg" alt="Slide Human 2">
+                <img src="Slide human 3.jpg" alt="Slide Human 3">
+                <img src="Slide human 4.jpg" alt="Slide Human 4">
+                <img src="Slide human 5.jpg" alt="Slide Human 5">
+                <img src="Slide human 6.jpg" alt="Slide Human 6">
+                <img src="Slide human 7.jpg" alt="Slide Human 7">
+                <img src="Slide human 8.jpg" alt="Slide Human 8">
+                <img src="Slide human 9.jpg" alt="Slide Human 9">
+                <img src="Slide human 10.jpg" alt="Slide Human 10">
+                <img src="Slide human 11.jpg" alt="Slide Human 11">
+                <img src="Slide human 12.jpg" alt="Slide Human 12">
+                <img src="Slide human 13.jpg" alt="Slide Human 13">
             </div>
         </div>
 
+        <!-- DỰ ÁN 6 -->
         <div class="project-card">
             <h2>📌 DỰ ÁN 6: Khung Đạo đức Trí tuệ Nhân tạo</h2>
             <p><strong>Mục tiêu:</strong> Thiết lập "Bộ 5 nguyên tắc sử dụng AI" cá nhân (Làm chủ, Hoài nghi học thuật, Minh bạch hóa, Đóng góp vượt trội, Tôn trọng bản quyền) bảo vệ tính liêm chính.</p>
@@ -372,6 +436,7 @@
             </div>
         </div>
 
+        <!-- DỰ ÁN 7 -->
         <div class="project-card">
             <h2>📌 DỰ ÁN 7: Dùng LLM Phân tích Mâu thuẫn Xã hội</h2>
             <p><strong>Mục tiêu:</strong> Triển khai LLM phân tích 2 nguồn báo chí để lập mô hình mâu thuẫn xung đột 3 bên (Nhà đầu tư - Chính quyền - Người dân) liên quan đến đất đai di sản.</p>
@@ -407,14 +472,21 @@
             </table>
         </div>
 
+        <!-- TRANG TỔNG KẾT KÈM ẢNH ĐẸP -->
         <section id="tong-ket" class="project-card" style="background: linear-gradient(135deg, rgba(20,25,40,0.9), rgba(0,242,254,0.05)); border: 2px solid var(--primary);">
             <h1 style="color: var(--primary); text-align: center; font-size: 2.2rem; text-transform: uppercase;">🧠 SYSTEM SHUTDOWN: ĐÚC KẾT</h1>
             
-            <h3 style="color: var(--secondary);">1. Năng lực Hệ thống (Technical Core)</h3>
-            <p style="color: #a1b2c3;">Quá trình tham gia học phần đã chuyển dịch phương pháp làm việc từ khai thác thụ động sang quản trị hệ thống chủ động. Năng lực cốt lõi đạt được bao gồm làm chủ kỹ thuật Prompt Engineering phức hợp và vận hành quy trình số hóa tài liệu tuân thủ chuẩn mực học thuật nghiêm ngặt.</p>
-            
-            <h3 style="color: var(--secondary);">2. Tích hợp Tương lai (Future Integration)</h3>
-            <p style="color: #a1b2c3;">Thách thức cốt lõi nằm ở việc duy trì tính logic và khách quan tuyệt đối. Trong tương lai, hệ thống kỹ năng này sẽ được tích hợp vào quy trình phân tích định lượng (SPSS/Jamovi) để đo lường chính xác các chỉ số tương tác thương hiệu điểm đến, đóng góp vào chiến lược thiết kế Công nghiệp Văn hóa bền vững.</p>
+            <div class="reflection-container">
+                <div class="reflection-content">
+                    <h3 style="color: var(--secondary);">1. Năng lực Hệ thống (Technical Core)</h3>
+                    <p style="color: #a1b2c3;">Quá trình tham gia học phần đã chuyển dịch phương pháp làm việc từ khai thác thụ động sang quản trị hệ thống chủ động. Năng lực cốt lõi đạt được bao gồm làm chủ kỹ thuật Prompt Engineering phức hợp và vận hành quy trình số hóa tài liệu tuân thủ chuẩn mực học thuật nghiêm ngặt.</p>
+                    
+                    <h3 style="color: var(--secondary);">2. Tích hợp Tương lai (Future Integration)</h3>
+                    <p style="color: #a1b2c3;">Thách thức cốt lõi nằm ở việc duy trì tính logic và khách quan tuyệt đối. Trong tương lai, hệ thống kỹ năng này sẽ được tích hợp vào quy trình phân tích định lượng (SPSS/Jamovi) để đo lường chính xác các chỉ số tương tác thương hiệu điểm đến, đóng góp vào chiến lược thiết kế Công nghiệp Văn hóa bền vững.</p>
+                </div>
+                <!-- Chèn ảnh cá nhân siêu cute vào phần tổng kết -->
+                <img src="Aboutme4_removebg.PNG" alt="Profile pic" class="reflection-img">
+            </div>
         </section>
 
     </div>
