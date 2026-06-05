@@ -3,60 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Đinh Thị Tâm Như</title>
-    <!-- Font chữ Nunito -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <title>CYBER-PORTFOLIO | TÂM NHƯ</title>
+    <!-- Font chữ công nghệ -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* TỔNG THỂ GIAO DIỆN CYBER-CUTE */
+        /* TỔNG THỂ GIAO DIỆN CYBERPUNK NGẦU LÒI */
         :root {
-            --bg-color: #0d1117; 
-            --primary: #00f2fe; 
-            --secondary: #fe0979; 
-            --text-main: #e6edf3; 
-            --card-bg: rgba(22, 27, 34, 0.8); 
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-color: #050505; /* Đen sâu */
+            --primary: #00ffcc; /* Cyan Neon */
+            --secondary: #ff00ff; /* Magenta Neon */
+            --text-main: #e0e6ed; 
+            --card-bg: rgba(10, 10, 15, 0.85); 
+            --glass-border: #333;
         }
 
         body {
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Rajdhani', sans-serif;
             background-color: var(--bg-color);
-            background-image: radial-gradient(circle at 10% 20%, rgba(0, 242, 254, 0.05) 0%, transparent 20%),
-                              radial-gradient(circle at 90% 80%, rgba(254, 9, 121, 0.05) 0%, transparent 20%);
+            background-image: 
+                linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
             color: var(--text-main);
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* STICKER HOẠT HOẠ CÔNG NGHỆ */
-        .sticker {
+        h1, h2, h3, h4 {
+            font-family: 'Share Tech Mono', monospace;
+            text-transform: uppercase;
+        }
+
+        /* STICKER/ICON CÔNG NGHỆ BẬP BỀNH */
+        .cyber-icon {
             position: fixed;
-            font-size: 2.5rem;
-            animation: float 4s ease-in-out infinite;
+            font-size: 2rem;
+            animation: glitch-float 4s infinite;
             z-index: 0;
-            opacity: 0.6;
-            filter: drop-shadow(0 0 10px var(--primary));
+            opacity: 0.3;
+            color: var(--primary);
         }
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(15deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
+        @keyframes glitch-float {
+            0% { transform: translateY(0px) skewX(0deg); opacity: 0.3;}
+            50% { transform: translateY(-15px) skewX(2deg); opacity: 0.6; text-shadow: 0 0 10px var(--primary); }
+            100% { transform: translateY(0px) skewX(0deg); opacity: 0.3;}
         }
-        .s1 { top: 15%; left: 5%; }
-        .s2 { top: 25%; right: 8%; font-size: 3.5rem; filter: drop-shadow(0 0 10px var(--secondary)); }
-        .s3 { top: 70%; left: 8%; }
-        .s4 { bottom: 10%; right: 5%; font-size: 2rem; }
+        .i1 { top: 15%; left: 5%; }
+        .i2 { top: 45%; right: 5%; font-size: 3rem; color: var(--secondary); }
+        .i3 { top: 80%; left: 8%; }
 
-        /* THANH ĐIỀU HƯỚNG */
+        /* DECOR ẢNH CÁ NHÂN RẢI RÁC */
+        .decor-img {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.4;
+            filter: grayscale(80%) contrast(1.2) drop-shadow(0 0 10px var(--primary));
+            transition: all 0.5s ease;
+            pointer-events: none; /* Không cản trở click chuột */
+        }
+        .decor-img:hover {
+            opacity: 0.9;
+            filter: grayscale(0%) drop-shadow(0 0 20px var(--secondary));
+        }
+        /* Phân bố ảnh 1, 3, 4 dọc theo body */
+        .img-decor-1 { top: 1200px; right: -50px; width: 250px; }
+        .img-decor-3 { top: 2800px; left: -80px; width: 300px; }
+        .img-decor-4 { bottom: 300px; right: -20px; width: 220px; }
+
+        /* THANH ĐIỀU HƯỚNG CYBER */
         nav {
-            background: rgba(13, 17, 23, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(5, 5, 5, 0.9);
+            border-bottom: 2px solid var(--primary);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid var(--glass-border);
             display: flex;
             justify-content: center;
             padding: 15px 0;
@@ -64,218 +88,197 @@
         nav a {
             text-decoration: none;
             color: var(--text-main);
-            font-weight: 800;
-            margin: 0 20px;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s, text-shadow 0.3s;
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: 700;
+            margin: 0 25px;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            position: relative;
         }
         nav a:hover { 
             color: var(--primary); 
-            text-shadow: 0 0 10px var(--primary);
+            text-shadow: 0 0 8px var(--primary);
         }
+        nav a::before {
+            content: '['; position: absolute; left: -15px; opacity: 0; transition: 0.3s; color: var(--secondary);
+        }
+        nav a::after {
+            content: ']'; position: absolute; right: -15px; opacity: 0; transition: 0.3s; color: var(--secondary);
+        }
+        nav a:hover::before, nav a:hover::after { opacity: 1; }
 
         /* BỐ CỤC CHUNG */
         .container {
-            max-width: 950px;
-            margin: 100px auto 50px;
+            max-width: 1000px;
+            margin: 120px auto 50px;
             padding: 0 20px;
             position: relative;
             z-index: 1;
         }
 
-        /* SECTION GIỚI THIỆU (CÓ THÊM ẢNH) */
+        /* SECTION GIỚI THIỆU */
         .hero {
             display: flex;
             align-items: center;
             gap: 40px;
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
             padding: 40px;
-            border-radius: 30px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 0 30px rgba(0, 242, 254, 0.1);
+            border-top: 4px solid var(--primary);
+            border-bottom: 4px solid var(--secondary);
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.1);
             margin-bottom: 60px;
+            position: relative;
         }
-        
+        .hero::after {
+            content: 'SYS_RDY';
+            position: absolute;
+            top: 10px; right: 15px;
+            font-family: monospace;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
         .hero-img-container {
             position: relative;
-            width: 260px;
-            height: 260px;
+            width: 280px;
+            height: 280px;
+            flex-shrink: 0;
         }
-
-        .hero img {
+        .hero img.main-avatar {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 30%; 
-            border: 4px solid transparent;
-            background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
-                        linear-gradient(135deg, var(--primary), var(--secondary)) border-box;
-            box-shadow: 0 0 25px rgba(254, 9, 121, 0.3);
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Ảnh nhỏ cute bay bên cạnh ảnh chính */
-        .cute-floating-img {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            bottom: -20px;
-            right: -30px;
-            border-radius: 50%;
-            border: 3px solid var(--primary);
-            z-index: 3;
-            animation: float 5s ease-in-out infinite;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
-            object-fit: cover;
-            background-color: #1a202c;
+            border-radius: 10px; 
+            border: 2px solid var(--primary);
+            box-shadow: -5px 5px 0px var(--secondary);
+            filter: contrast(1.1);
         }
 
         .hero-text h1 {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-main);
             font-size: 2.8rem;
             margin-bottom: 10px;
-            font-weight: 900;
+            text-shadow: 2px 2px 0px var(--secondary);
         }
-        .hero-text p { font-size: 1.1rem; color: #a1b2c3; }
-        .hero-text strong { color: var(--text-main); }
+        .hero-text h1 span { color: var(--primary); }
+        .hero-text p { font-size: 1.15rem; color: #b0c4de; }
+        .hero-text strong { color: var(--primary); }
 
         /* THẺ DỰ ÁN */
         .project-card {
             background: var(--card-bg);
             padding: 35px;
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 40px;
+            border-radius: 8px;
+            border: 1px solid #222;
+            border-left: 5px solid var(--primary);
+            margin-bottom: 50px;
             position: relative;
-            overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: 0.3s;
         }
         .project-card:hover { 
-            transform: translateY(-5px); 
-            border-color: rgba(0, 242, 254, 0.3);
+            border-left-color: var(--secondary);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.1);
+            transform: translateX(5px);
         }
         .project-card h2 { 
-            color: #ffffff; 
+            color: var(--primary); 
             margin-top: 0; 
-            text-shadow: 0 0 10px rgba(255,255,255,0.2);
+            font-size: 1.6rem;
+            border-bottom: 1px dashed #444;
+            padding-bottom: 10px;
         }
-        .project-card h4 { color: var(--primary); margin-bottom: 10px;}
+        .project-card h4 { color: var(--secondary); margin-top: 25px; }
 
-        /* TÍNH NĂNG KÉO NGANG ẢNH HIỆN ĐẠI */
+        /* TÍNH NĂNG KÉO NGANG ẢNH (SCROLL X) */
         .scroll-gallery {
             display: flex;
             overflow-x: auto;
-            gap: 15px;
+            gap: 20px;
             padding-bottom: 15px;
             margin-bottom: 20px;
             scroll-snap-type: x mandatory;
             scrollbar-width: thin;
-            scrollbar-color: var(--secondary) rgba(255,255,255,0.05);
+            scrollbar-color: var(--primary) #111;
         }
-        .scroll-gallery::-webkit-scrollbar { height: 10px; }
-        .scroll-gallery::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; }
-        .scroll-gallery::-webkit-scrollbar-thumb { 
-            background: linear-gradient(90deg, var(--primary), var(--secondary)); 
-            border-radius: 10px; 
-        }
+        .scroll-gallery::-webkit-scrollbar { height: 8px; }
+        .scroll-gallery::-webkit-scrollbar-track { background: #111; }
+        .scroll-gallery::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 0; }
+        
         .scroll-gallery img {
             scroll-snap-align: start;
             height: 280px;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            border-radius: 4px;
+            border: 1px solid #333;
             object-fit: contain;
-            background: #111;
+            background: #000;
+            transition: 0.3s;
         }
+        .scroll-gallery img:hover { border-color: var(--primary); }
 
-        /* NÚT TRUY CẬP NHANH NEON */
+        /* NÚT TRUY CẬP NHANH CYBER */
         .btn-cta {
             background: transparent;
             color: var(--primary) !important;
-            padding: 10px 25px;
+            padding: 10px 30px;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: 800;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.1rem;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.2), inset 0 0 10px rgba(0, 255, 204, 0.1);
+            display: inline-block;
             margin-top: 15px;
-            border: 2px solid var(--primary);
-            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2), inset 0 0 10px rgba(0, 242, 254, 0.1);
-            transition: all 0.3s ease;
+            text-transform: uppercase;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
         }
         .btn-cta:hover {
             background: var(--primary);
-            color: var(--bg-color) !important;
+            color: #000 !important;
             box-shadow: 0 0 20px var(--primary);
         }
 
-        /* BẢNG (TABLE) DARK MODE */
+        /* BẢNG (TABLE) */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 15px;
-            font-size: 0.95rem;
-            background: rgba(0,0,0,0.2);
-            border-radius: 10px;
-            overflow: hidden;
+            font-size: 1rem;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #333;
         }
         th, td {
-            padding: 14px;
-            border: 1px solid var(--glass-border);
+            padding: 15px;
+            border: 1px solid #333;
             text-align: left;
         }
         th { 
-            background: rgba(254, 9, 121, 0.15); 
-            color: var(--secondary); 
-            font-weight: 800;
+            background: rgba(0, 255, 204, 0.1); 
+            color: var(--primary); 
+            font-family: 'Share Tech Mono', monospace;
         }
-        tr:hover { background: rgba(0, 242, 254, 0.05); }
-
-        /* KHUNG REFLECTION KẾT HỢP ẢNH TÁCH NỀN */
-        .reflection-container {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        .reflection-content {
-            flex: 1;
-        }
-        .reflection-img {
-            width: 200px;
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(0, 242, 254, 0.3));
-            animation: float 4s ease-in-out infinite;
-        }
+        tr:hover { background: rgba(255, 0, 255, 0.05); }
 
     </style>
 </head>
 <body>
 
-    <!-- Stickers Công Nghệ -->
-    <div class="sticker s1">🤖</div>
-    <div class="sticker s2">💻</div>
-    <div class="sticker s3">⚡</div>
-    <div class="sticker s4">👾</div>
+    <!-- Các icon công nghệ -->
+    <div class="cyber-icon i1">⚡</div>
+    <div class="cyber-icon i2">💻</div>
+    <div class="cyber-icon i3">🛰️</div>
+
+    <!-- CÁC ẢNH CÁ NHÂN RẢI RÁC (Đúng tên Github của bạn) -->
+    <img src="Aboutme1_removebg.PNG" class="decor-img img-decor-1" alt="Decor 1">
+    <!-- Cố tình ghi Aboume3 theo đúng lỗi type trên repo của bạn để load được ảnh -->
+    <img src="Aboume3_removebg.PNG" class="decor-img img-decor-3" alt="Decor 2">
+    <img src="Aboutme4_removebg.PNG" class="decor-img img-decor-4" alt="Decor 3">
 
     <!-- Thanh menu -->
     <nav>
         <a href="#gioi-thieu">PROFILE</a>
-        <a href="#du-an">PROJECTS</a>
-        <a href="#tong-ket">REFLECTION</a>
+        <a href="#du-an">DATABASE</a>
+        <a href="#tong-ket">SYSTEM_LOG</a>
     </nav>
 
     <div class="container">
@@ -283,91 +286,90 @@
         <!-- TRANG GIỚI THIỆU -->
         <section id="gioi-thieu" class="hero">
             <div class="hero-img-container">
-                <!-- File name chính xác 100% từ Github Repo của bà -->
-                <img src="Aboutme1_removebg.PNG" alt="Đinh Thị Tâm Như">
-                <!-- Chèn thêm ảnh nhỏ lơ lửng cute -->
-                <img src="Aboume3_removebg.PNG" alt="Cute pic" class="cute-floating-img">
+                <!-- Ảnh chính: Aboutme2_removebg.png -->
+                <img src="Aboutme2_removebg.png" alt="Đinh Thị Tâm Như" class="main-avatar">
             </div>
             
             <div class="hero-text">
-                <h1>Hello, I'm Tâm Như! 🚀</h1>
-                <p><strong>MSSV:</strong> 24090427 | <strong>Khoa:</strong> Công nghiệp văn hoá và di sản (VNU-SIS)</p>
-                <p>Chào mừng đến với hệ thống lưu trữ số của mình. Nơi đây vạch ra lộ trình minh chứng hóa quá trình vận dụng công nghệ thông tin và AI tạo sinh vào nghiên cứu khoa học, đặc biệt trong việc phân tích lý thuyết tài sản thương hiệu điểm đến và quản trị văn hóa.</p>
+                <h1>INITIATING: <span>TÂM NHƯ_</span></h1>
+                <p><strong>[ID]:</strong> 24090427 <br><strong>[UNIT]:</strong> Công nghiệp văn hoá và di sản (VNU-SIS)</p>
+                <p>Hệ thống lưu trữ số cá nhân. Dữ liệu vạch ra lộ trình minh chứng hóa quá trình vận dụng công nghệ thông tin và AI tạo sinh vào nghiên cứu khoa học, đặc biệt trong việc phân tích lý thuyết tài sản thương hiệu điểm đến và quản trị văn hóa. <!--[span_2](start_span)[span_2](end_span) --></p>
             </div>
         </section>
 
         <!-- TRANG DỰ ÁN -->
-        <h1 id="du-an" style="text-align: center; color: var(--primary); margin: 60px 0; font-size: 2.5rem; text-shadow: 0 0 15px rgba(0,242,254,0.3);">📂 SYSTEM LOG: PROJECTS</h1>
+        <h1 id="du-an" style="text-align: center; color: var(--text-main); margin: 80px 0; font-size: 2.5rem; text-shadow: 2px 2px 0 var(--secondary);">>> PROJECT_DATABASE <<</h1>
 
         <!-- DỰ ÁN 1 -->
         <div class="project-card">
-            <h2>📌 DỰ ÁN 1: Quản trị Tài nguyên Số (macOS)</h2>
-            <p><strong>Mục tiêu:</strong> Tối ưu hóa không gian lưu trữ tài liệu nghiên cứu trên hệ điều hành macOS nhằm đẩy nhanh tốc độ truy xuất dữ liệu.</p>
-            <p><strong>Quá trình & Kết quả:</strong> Thiết lập cấu trúc thư mục phân cấp 3 tầng logic, chuẩn hóa quy tắc đặt tên tệp tin không dấu. Giảm thiểu 100% tình trạng thất lạc tài liệu.</p>
+            <h2>[01] QUẢN TRỊ TÀI NGUYÊN SỐ (macOS)</h2>
+            <p><strong>Mục tiêu:</strong> Tối ưu hóa không gian lưu trữ tài liệu nghiên cứu trên hệ điều hành macOS nhằm đẩy nhanh tốc độ truy xuất dữ liệu. <!--[span_3](start_span)[span_3](end_span) --></p>
+            <p><strong>Quá trình & Kết quả:</strong> Thiết lập cấu trúc thư mục phân cấp 3 tầng logic, chuẩn hóa quy tắc đặt tên tệp tin không dấu. Giảm thiểu 100% tình trạng thất lạc tài liệu. <!--[span_4](start_span)[span_4](end_span)[span_5](start_span)[span_5](end_span) --></p>
             
-            <a href="https://drive.google.com/file/d/1qfp0-jVHHbRLik5Ok_KdFq--jl_LpauH/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ Truy cập Báo cáo 1</a>
+            <a href="https://drive.google.com/file/d/1qfp0-jVHHbRLik5Ok_KdFq--jl_LpauH/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ TRUY CẬP BÁO CÁO 1</a>
             
-            <h4 style="margin-top: 25px;">🖼️ Output Visualization (Kéo ngang):</h4>
+            <h4>> OUTPUT_VISUALIZATION:</h4>
             <div class="scroll-gallery">
-                <!-- Tên file chính xác .jpg -->
                 <img src="Ket qua bai 1.jpg" alt="Kết quả bài 1">
             </div>
         </div>
 
         <!-- DỰ ÁN 2 -->
         <div class="project-card">
-            <h2>📌 DỰ ÁN 2: Thẩm định Dữ liệu Học thuật & Khung Trích dẫn</h2>
-            <p><strong>Mục tiêu:</strong> Khai thác và thẩm định chất lượng dữ liệu học thuật trên môi trường số phục vụ cho đề tài "Nghiên cứu sức ảnh hưởng của độ nhận diện tới sức hút du lịch".</p>
-            <p><strong>Quá trình:</strong> Vận dụng hệ toán tử tìm kiếm nâng cao (AND, OR, site:, filetype:). Áp dụng chuẩn đánh giá CRAAP phân tích 10 nguồn tài liệu quốc tế (chuẩn APA 7th).</p>
+            <h2>[02] THẨM ĐỊNH DỮ LIỆU & KHUNG TRÍCH DẪN</h2>
+            <p><strong>Mục tiêu:</strong> Khai thác và thẩm định chất lượng dữ liệu học thuật trên môi trường số phục vụ cho đề tài "Nghiên cứu sức ảnh hưởng của độ nhận diện tới sức hút du lịch". <!--[span_6](start_span)[span_6](end_span) --></p>
+            <p><strong>Quá trình & Kết quả:</strong> Vận dụng hệ toán tử tìm kiếm nâng cao (AND, OR, site:, filetype:). Áp dụng chuẩn đánh giá CRAAP phân tích 10 nguồn tài liệu quốc tế (chuẩn APA 7th). <!--[span_7](start_span)[span_7](end_span)[span_8](start_span)[span_8](end_span) --></p>
             
-            <a href="https://drive.google.com/file/d/1x08WwFu9i4Jz4_CiRcNfTLMAfQuYKVtH/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ Truy cập Báo cáo 2</a>
+            <a href="https://drive.google.com/file/d/1x08WwFu9i4Jz4_CiRcNfTLMAfQuYKVtH/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ TRUY CẬP BÁO CÁO 2</a>
 
-            <h4 style="margin-top: 25px;">📊 DATABASE: Xếp hạng 10 Nguồn CRAAP</h4>
+            <h4>> DATABASE_CRAAP_RANKING:</h4>
             <table>
                 <tr>
-                    <th style="width:10%">Hạng</th>
-                    <th style="width:45%">Tên tài liệu (Nguồn)</th>
-                    <th style="width:45%">Đánh giá giá trị ứng dụng</th>
+                    <th style="width:10%">HẠNG</th>
+                    <th style="width:45%">TÊN TÀI LIỆU</th>
+                    <th style="width:45%">ĐÁNH GIÁ GIÁ TRỊ ỨNG DỤNG</th>
                 </tr>
-                <tr><td>1</td><td>Does world heritage list really induce more tourists? Evidence from Macau (2012)</td><td>Mô hình kinh tế lượng siêu nghiêm ngặt chứng minh hiệu ứng ngắn hạn của UNESCO.</td></tr>
-                <tr><td>2</td><td>The Overlooked Contribution of National Heritage Designation in City Branding... (2022)</td><td>So sánh trực tiếp giá trị danh hiệu Di sản Quốc gia đối với hình ảnh thành phố.</td></tr>
-                <tr><td>3</td><td>Tác động của tương đồng hình ảnh đến tài sản thương hiệu điểm đến... tại Hội An (2023)</td><td>Kỹ thuật thống kê nâng cao (CB-SEM, CFA bậc 2) chứng minh tác động tâm lý.</td></tr>
-                <tr><td>4</td><td>Tác động của trải nghiệm đa chiều và nhận diện thương hiệu... tại Hà Nội (2025)</td><td>Số liệu mới 2025, ứng dụng PLS-SEM giải mã vai trò trải nghiệm trí tuệ.</td></tr>
-                <tr><td>5</td><td>Destination image branding for world heritage sites... combining GIS with sentiment analysis (2024)</td><td>Phương pháp luận mới về AI và GIS định vị bản đồ cảm xúc từ Big Data.</td></tr>
-                <tr><td>6</td><td>Loyalty in Heritage Tourism: The Case of Córdoba and Its Four World Heritage Sites (2020)</td><td>Cảnh báo nguy cơ thương mại hóa làm mất bản sắc đô thị cổ từ Châu Âu.</td></tr>
-                <tr><td>7</td><td>Tác động của trải nghiệm thương hiệu điểm đến trên truyền thông xã hội... tại Bình Định (2024)</td><td>Vai trò trung gian của "sự chân thực thương hiệu" trên không gian mạng.</td></tr>
-                <tr><td>8</td><td>Destination Brand Equity of Cultural Destination: The Case of Hue City, Vietnam (2024)</td><td>Cung cấp thang đo CBBE tiêu chuẩn khảo sát thực tế khách trải nghiệm di sản.</td></tr>
-                <tr><td>9</td><td>Exploring the Factors Influencing Heritage Tourism Development... (2023)</td><td>Hệ thống hóa khoa học nhân tố vĩ mô dựa trên quy trình lọc tài liệu SLR.</td></tr>
-                <tr><td>10</td><td>Tài sản thương hiệu điểm đến: Góc nhìn từ cơ sở lý luận (2016)</td><td>Tài liệu lý luận gốc xuất sắc hệ thống hóa toàn bộ định nghĩa kinh điển.</td></tr>
+                <tr><td>1</td><td>Does world heritage list really induce more tourists? (2012)</td><td>Mô hình kinh tế lượng siêu nghiêm ngặt chứng minh hiệu ứng ngắn hạn của UNESCO. <!--[span_9](start_span)[span_9](end_span) --></td></tr>
+                <tr><td>2</td><td>The Overlooked Contribution of National Heritage Designation... (2022)</td><td>So sánh trực tiếp giá trị danh hiệu Di sản Quốc gia đối với hình ảnh thành phố. <!--[span_10](start_span)[span_10](end_span) --></td></tr>
+                <tr><td>3</td><td>Tác động của tương đồng hình ảnh đến tài sản thương hiệu điểm đến (2023)</td><td>Kỹ thuật thống kê nâng cao (CB-SEM, CFA bậc 2) chứng minh tác động tâm lý. <!--[span_11](start_span)[span_11](end_span) --></td></tr>
+                <tr><td>4</td><td>Tác động của trải nghiệm đa chiều và nhận diện thương hiệu (2025)</td><td>Số liệu mới 2025, ứng dụng PLS-SEM giải mã vai trò trải nghiệm trí tuệ. <!--[span_12](start_span)[span_12](end_span) --></td></tr>
+                <tr><td>5</td><td>Destination image branding for world heritage sites (2024)</td><td>Phương pháp luận mới về AI và GIS định vị bản đồ cảm xúc từ Big Data. <!--[span_13](start_span)[span_13](end_span) --></td></tr>
+                <tr><td>6</td><td>Loyalty in Heritage Tourism: The Case of Córdoba (2020)</td><td>Cảnh báo nguy cơ thương mại hóa làm mất bản sắc đô thị cổ từ Châu Âu. <!--[span_14](start_span)[span_14](end_span) --></td></tr>
+                <tr><td>7</td><td>Tác động của trải nghiệm thương hiệu điểm đến trên MXH (2024)</td><td>Vai trò trung gian của "sự chân thực thương hiệu" trên không gian mạng. <!--[span_15](start_span)[span_15](end_span) --></td></tr>
+                <tr><td>8</td><td>Destination Brand Equity of Cultural Destination: Hue City (2024)</td><td>Cung cấp thang đo CBBE tiêu chuẩn khảo sát thực tế khách trải nghiệm di sản. <!--[span_16](start_span)[span_16](end_span) --></td></tr>
+                <tr><td>9</td><td>Exploring the Factors Influencing Heritage Tourism... (2023)</td><td>Hệ thống hóa khoa học nhân tố vĩ mô dựa trên quy trình lọc tài liệu SLR. <!--[span_17](start_span)[span_17](end_span) --></td></tr>
+                <tr><td>10</td><td>Tài sản thương hiệu điểm đến: Góc nhìn từ cơ sở lý luận (2016)</td><td>Tài liệu lý luận gốc xuất sắc hệ thống hóa toàn bộ định nghĩa kinh điển. <!--[span_18](start_span)[span_18](end_span) --></td></tr>
             </table>
         </div>
 
         <!-- DỰ ÁN 3 -->
         <div class="project-card">
-            <h2>📌 DỰ ÁN 3: Tối ưu hóa Kỹ nghệ Câu lệnh (Prompt Engineering)</h2>
-            <p><strong>Mục tiêu:</strong> Cải thiện chất lượng phân tích văn bản của AI, hạn chế ảo giác (hallucination) qua kỹ thuật <em>Role Prompting</em> và <em>Chain-of-thought</em>.</p>
+            <h2>[03] TỐI ƯU HÓA KỸ NGHỆ CÂU LỆNH (PROMPT ENG)</h2>
+            <p><strong>Mục tiêu:</strong> Cải thiện chất lượng phân tích văn bản của AI, hạn chế ảo giác (hallucination) khi xử lý các học thuyết phức tạp. <!--[span_19](start_span)[span_19](end_span) --></p>
+            <p><strong>Quá trình & Cách thức:</strong> Thực nghiệm đối chiếu đầu ra của AI qua 3 cấp độ: Cơ bản, Cải tiến và Nâng cao. Áp dụng thành thạo nhóm kỹ thuật Role Prompting, Chain-of-thought và Few-shot Examples để bóc tách tài liệu học thuật. <!--[span_20](start_span)[span_20](end_span)[span_21](start_span)[span_21](end_span) --></p>
+            <p><strong>Kết quả:</strong> Rút gọn 60% thời gian xử lý dữ liệu thô, chuyển đổi văn bản với độ chính xác học thuật cao. <!--[span_22](start_span)[span_22](end_span) --></p>
             
-            <a href="https://drive.google.com/file/d/1Y6ki1D-mFVx_dOPCxODBBQ-70d0vO9_E/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ Truy cập Báo cáo 3</a>
+            <a href="https://drive.google.com/file/d/1Y6ki1D-mFVx_dOPCxODBBQ-70d0vO9_E/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ TRUY CẬP BÁO CÁO 3</a>
             
-            <h4 style="margin-top: 25px;">🖼️ Output Visualization (Kéo ngang):</h4>
+            <h4>> OUTPUT_VISUALIZATION:</h4>
             <div class="scroll-gallery">
-                <!-- Tên file chính xác .jpg -->
                 <img src="Promt cơ bản.jpg" alt="Prompt cơ bản">
-                <img src="Promt cài tiến.jpg" alt="Prompt cải tiến">
+                <img src="Promt cải tiến.jpg" alt="Prompt cải tiến">
                 <img src="promt nâng cao.jpg" alt="Prompt nâng cao">
             </div>
         </div>
 
         <!-- DỰ ÁN 4 -->
         <div class="project-card">
-            <h2>📌 DỰ ÁN 4: Quản trị Dự án Hợp tác Trực tuyến</h2>
-            <p><strong>Mục tiêu:</strong> Đồng bộ hệ sinh thái Google Workspace và Messenger để quản lý dự án nhóm từ xa, sử dụng <em>Document Outline</em> chống đè lấp dữ liệu.</p>
+            <h2>[04] QUẢN TRỊ DỰ ÁN HỢP TÁC TRỰC TUYẾN</h2>
+            <p><strong>Mục tiêu:</strong> Điều phối dự án nhóm trong điều kiện làm việc từ xa. <!--[span_23](start_span)[span_23](end_span) --></p>
+            <p><strong>Quá trình & Cách thức:</strong> Tích hợp bộ 3 nền tảng: Messenger (ghim/pin tiến độ), Google Drive (thiết lập thư mục 3 cấp, phân quyền truy cập), Google Docs (dùng Document Outline phân vùng soạn thảo để chống đè lấp dữ liệu). <!--[span_24](start_span)[span_24](end_span)[span_25](start_span)[span_25](end_span) --></p>
+            <p><strong>Kết quả:</strong> Đồng bộ hệ sinh thái số mượt mà, tỷ lệ đè lấp dữ liệu được kiểm soát ở mức 0%. <!--[span_26](start_span)[span_26](end_span) --></p>
             
-            <a href="https://drive.google.com/file/d/1WA6YEKNzMJBgCLE7KAg3F9LJiFSd3xKD/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ Truy cập Báo cáo 4</a>
+            <a href="https://drive.google.com/file/d/1WA6YEKNzMJBgCLE7KAg3F9LJiFSd3xKD/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ TRUY CẬP BÁO CÁO 4</a>
             
-            <h4 style="margin-top: 25px;">🖼️ Workflow System (Kéo ngang):</h4>
+            <h4>> WORKFLOW_SYSTEM:</h4>
             <div class="scroll-gallery">
-                <!-- Tên file chính xác .jpg và HÌnh 2.4.jpg có chữ Ì -->
                 <img src="Hình 1.jpg" alt="Hình 1">
                 <img src="Hình 2.jpg" alt="Hình 2">
                 <img src="Hình 2.1.jpg" alt="Hình 2.1">
@@ -382,14 +384,15 @@
 
         <!-- DỰ ÁN 5 -->
         <div class="project-card">
-            <h2>📌 DỰ ÁN 5: Sáng tạo Nội dung Số & Thiết kế Ấn phẩm</h2>
-            <p><strong>Mục tiêu:</strong> Sản xuất kịch bản 12 slide đánh giá AI. Khai thác chuỗi: NotebookLM -> ChatGPT -> Gemini. Can thiệp thủ công làm sạch watermark do AI tạo ra.</p>
+            <h2>[05] SÁNG TẠO NỘI DUNG SỐ & THIẾT KẾ ẤN PHẨM</h2>
+            <p><strong>Mục tiêu:</strong> Sản xuất kịch bản 12 slide đánh giá tác động của AI đối với bản quyền nghệ thuật. <!--[span_27](start_span)[span_27](end_span) --></p>
+            <p><strong>Quá trình & Cách thức:</strong> Vận hành chuỗi công cụ chuyên biệt: NotebookLM (trích xuất) -> ChatGPT (chuyển đổi văn phong) -> Google Gemini (cô đọng hiển thị). Đặc biệt, can thiệp thủ công xóa watermark, lỗi nền do AI tự sinh để đảm bảo tính chuyên nghiệp. <!--[span_28](start_span)[span_28](end_span)[span_29](start_span)[span_29](end_span) --></p>
+            <p><strong>Kết quả:</strong> Hoàn thiện 12 ấn phẩm slide phân tích học thuật sắc sảo, cân bằng giữa công nghệ và tư duy nhân loại. <!--[span_30](start_span)[span_30](end_span) --></p>
             
-            <a href="https://drive.google.com/file/d/1SLzU4b2TzgbHsUM3uSvfr2w4shoBaZfP/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ Truy cập Báo cáo 5</a>
+            <a href="https://drive.google.com/file/d/1SLzU4b2TzgbHsUM3uSvfr2w4shoBaZfP/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ TRUY CẬP BÁO CÁO 5</a>
 
-            <h4 style="margin-top: 25px; color: var(--secondary);">🤖 BEFORE: Bản nháp thô từ AI (AI Draft)</h4>
-            <div class="scroll-gallery" style="border-bottom: 2px dashed rgba(255,255,255,0.1); padding-bottom: 25px;">
-                <!-- Slide AI 1 là .PNG, còn lại là .jpg -->
+            <h4 style="color: #666;">> BEFORE_AI_DRAFT:</h4>
+            <div class="scroll-gallery" style="border-bottom: 1px dashed #444; padding-bottom: 25px;">
                 <img src="Slide AI 1.PNG" alt="Slide AI 1">
                 <img src="Slide AI 2.jpg" alt="Slide AI 2">
                 <img src="Slide AI 3.jpg" alt="Slide AI 3">
@@ -404,9 +407,8 @@
                 <img src="Slide AI 12.jpg" alt="Slide AI 12">
             </div>
 
-            <h4 style="margin-top: 20px; color: var(--primary);">✨ AFTER: Bản hoàn thiện đã tinh chỉnh kỹ lưỡng (Human Final)</h4>
+            <h4 style="color: var(--primary);">> AFTER_HUMAN_FINAL_TOUCH:</h4>
             <div class="scroll-gallery">
-                <!-- Toàn bộ Human slide là .jpg -->
                 <img src="Slide human 1.jpg" alt="Slide Human 1">
                 <img src="Slide human 2.jpg" alt="Slide Human 2">
                 <img src="Slide human 3.jpg" alt="Slide Human 3">
@@ -425,12 +427,14 @@
 
         <!-- DỰ ÁN 6 -->
         <div class="project-card">
-            <h2>📌 DỰ ÁN 6: Khung Đạo đức Trí tuệ Nhân tạo</h2>
-            <p><strong>Mục tiêu:</strong> Thiết lập "Bộ 5 nguyên tắc sử dụng AI" cá nhân (Làm chủ, Hoài nghi học thuật, Minh bạch hóa, Đóng góp vượt trội, Tôn trọng bản quyền) bảo vệ tính liêm chính.</p>
+            <h2>[06] KHUNG ĐẠO ĐỨC TRÍ TUỆ NHÂN TẠO</h2>
+            <p><strong>Mục tiêu:</strong> Bảo vệ tính liêm chính học thuật trong kỷ nguyên số. <!--[span_31](start_span)[span_31](end_span) --></p>
+            <p><strong>Quá trình & Cách thức:</strong> Nghiên cứu đối chiếu chính sách quản lý học thuật tại VNU-SIS, trực tiếp phát hiện và chỉnh sửa các lỗi thuật ngữ do AI tạo ra. Thiết lập bộ nguyên tắc kiểm soát định lượng. <!--[span_32](start_span)[span_32](end_span)[span_33](start_span)[span_33](end_span) --></p>
+            <p><strong>Kết quả:</strong> Thiết lập "Bộ 5 nguyên tắc sử dụng AI" cá nhân (Làm chủ, Hoài nghi học thuật, Minh bạch hóa, Đóng góp vượt trội, Tôn trọng bản quyền). <!--[span_34](start_span)[span_34](end_span) --></p>
             
-            <a href="https://drive.google.com/file/d/1xGboCN93GHkdJWaR614FW83sdX8D7KAw/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ Truy cập Báo cáo 6</a>
+            <a href="https://drive.google.com/file/d/1xGboCN93GHkdJWaR614FW83sdX8D7KAw/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ TRUY CẬP BÁO CÁO 6</a>
             
-            <h4 style="margin-top: 25px;">🖼️ Ethical Protocol (Infographic):</h4>
+            <h4>> ETHICAL_PROTOCOL:</h4>
             <div class="scroll-gallery">
                 <img src="Inforgraphic.PNG" alt="Infographic đạo đức AI">
             </div>
@@ -438,55 +442,51 @@
 
         <!-- DỰ ÁN 7 -->
         <div class="project-card">
-            <h2>📌 DỰ ÁN 7: Dùng LLM Phân tích Mâu thuẫn Xã hội</h2>
-            <p><strong>Mục tiêu:</strong> Triển khai LLM phân tích 2 nguồn báo chí để lập mô hình mâu thuẫn xung đột 3 bên (Nhà đầu tư - Chính quyền - Người dân) liên quan đến đất đai di sản.</p>
-            <ul>
-                <li><a href="https://vn.luatkhoa.com/2026/06/khi-mo-ma-phai-nhuong-cho-cho-san-golf-cai-gia-xa-hoi-la-gi/" target="_blank" style="color: var(--secondary); font-weight: bold;">🔗 Bài báo 1: Luật Khoa Tạp chí</a></li>
-                <li><a href="https://boxitvn.blogspot.com/2026/06/cau-chuyen-ve-du-san-golf-va-khu-dan-cu.html" target="_blank" style="color: var(--primary); font-weight: bold;">🔗 Bài báo 2: Boxit Việt Nam</a></li>
+            <h2>[07] DÙNG LLM PHÂN TÍCH MÂU THUẪN XÃ HỘI</h2>
+            <p><strong>Mục tiêu:</strong> Triển khai LLM phân tích 2 nguồn báo chí để lập mô hình mâu thuẫn xung đột 3 bên (Nhà đầu tư - Chính quyền - Người dân) liên quan đến đất đai di sản. <!--[span_35](start_span)[span_35](end_span) --></p>
+            <p><strong>Quá trình & Cách thức:</strong> Cung cấp dữ liệu từ Luật Khoa Tạp chí và Boxit VN cho hệ thống AI. Yêu cầu AI phân loại văn bản, đối chiếu thực thể và cấu trúc hóa hệ lụy bằng kỹ thuật Chain-of-thought. <!--[span_36](start_span)[span_36](end_span)[span_37](start_span)[span_37](end_span) --></p>
+            
+            <ul style="list-style-type: none; padding-left: 0; margin: 20px 0;">
+                <li><a href="https://vn.luatkhoa.com/2026/06/khi-mo-ma-phai-nhuong-cho-cho-san-golf-cai-gia-xa-hoi-la-gi/" target="_blank" style="color: var(--secondary); font-weight: bold; text-decoration: none;">[>>] Bài báo 1: Luật Khoa Tạp chí</a></li>
+                <li style="margin-top: 10px;"><a href="https://boxitvn.blogspot.com/2026/06/cau-chuyen-ve-du-san-golf-va-khu-dan-cu.html" target="_blank" style="color: var(--primary); font-weight: bold; text-decoration: none;">[>>] Bài báo 2: Boxit Việt Nam</a></li>
             </ul>
             
-            <a href="https://drive.google.com/file/d/1IF6gXItxdHOGZ64yAk2omrvKBGvn3vx5/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ Truy cập Báo cáo 7</a>
+            <a href="https://drive.google.com/file/d/1IF6gXItxdHOGZ64yAk2omrvKBGvn3vx5/view?usp=drivesdk" target="_blank" class="btn-cta">⚡ TRUY CẬP BÁO CÁO 7</a>
 
-            <h4 style="margin-top: 25px;">📊 Lăng kính tiếp cận phản ánh báo chí:</h4>
+            <h4>> CONTENT_ANALYSIS_MATRIX:</h4>
             <table>
                 <tr>
-                    <th style="width: 20%;">Tiêu chí</th>
-                    <th style="width: 40%;">Luật Khoa Tạp chí</th>
-                    <th style="width: 40%;">Boxit Việt Nam</th>
+                    <th style="width: 20%;">TIÊU CHÍ</th>
+                    <th style="width: 40%;">LUẬT KHOA TẠP CHÍ</th>
+                    <th style="width: 40%;">BOXIT VIỆT NAM</th>
                 </tr>
                 <tr>
                     <td><strong>Lăng kính</strong></td>
-                    <td>Nhân văn, Văn hóa và Tâm linh. Tập trung vào "phần hồn" của đời sống làng xã.</td>
-                    <td>Kinh tế chính trị, Quy hoạch. Cơ chế vận hành dòng vốn, chính sách đất đai.</td>
+                    <td>Nhân văn, Văn hóa và Tâm linh. Tập trung vào "phần hồn" của đời sống làng xã. <!--[span_38](start_span)[span_38](end_span) --></td>
+                    <td>Kinh tế chính trị, Quy hoạch. Cơ chế vận hành dòng vốn, chính sách đất đai. <!--[span_39](start_span)[span_39](end_span) --></td>
                 </tr>
                 <tr>
                     <td><strong>Tiêu điểm</strong></td>
-                    <td>Di dời mồ mả tổ tiên làm rạn nứt căn tính văn hóa, lòng tự trọng của dân.</td>
-                    <td>Xung đột giữa dự án giải trí cao cấp với không gian sinh sống, tư liệu sản xuất.</td>
+                    <td>Di dời mồ mả tổ tiên làm rạn nứt căn tính văn hóa, lòng tự trọng của dân. <!--[span_40](start_span)[span_40](end_span) --></td>
+                    <td>Xung đột giữa dự án giải trí cao cấp với không gian sinh sống, tư liệu sản xuất. <!--[span_41](start_span)[span_41](end_span) --></td>
                 </tr>
                 <tr>
                     <td><strong>Lập luận</strong></td>
-                    <td>Tư duy triết học định lượng các "chi phí xã hội vô hình".</td>
-                    <td>Phân tích chính sách vạch trần việc mượn danh "phát triển kinh tế".</td>
+                    <td>Tư duy triết học định lượng các "chi phí xã hội vô hình". <!--[span_42](start_span)[span_42](end_span) --></td>
+                    <td>Phân tích chính sách vạch trần việc mượn danh "phát triển kinh tế". <!--[span_43](start_span)[span_43](end_span) --></td>
                 </tr>
             </table>
         </div>
 
         <!-- TRANG TỔNG KẾT KÈM ẢNH ĐẸP -->
-        <section id="tong-ket" class="project-card" style="background: linear-gradient(135deg, rgba(20,25,40,0.9), rgba(0,242,254,0.05)); border: 2px solid var(--primary);">
-            <h1 style="color: var(--primary); text-align: center; font-size: 2.2rem; text-transform: uppercase;">🧠 SYSTEM SHUTDOWN: ĐÚC KẾT</h1>
+        <section id="tong-ket" class="project-card" style="background: rgba(0, 255, 204, 0.05); border: 1px solid var(--primary); box-shadow: 0 0 30px rgba(0,255,204,0.1);">
+            <h1 style="color: var(--primary); text-align: center; font-size: 2.2rem; margin-bottom: 40px; text-shadow: 0 0 10px var(--primary);">[ SYSTEM SHUTDOWN: ĐÚC KẾT ]</h1>
             
-            <div class="reflection-container">
-                <div class="reflection-content">
-                    <h3 style="color: var(--secondary);">1. Năng lực Hệ thống (Technical Core)</h3>
-                    <p style="color: #a1b2c3;">Quá trình tham gia học phần đã chuyển dịch phương pháp làm việc từ khai thác thụ động sang quản trị hệ thống chủ động. Năng lực cốt lõi đạt được bao gồm làm chủ kỹ thuật Prompt Engineering phức hợp và vận hành quy trình số hóa tài liệu tuân thủ chuẩn mực học thuật nghiêm ngặt.</p>
-                    
-                    <h3 style="color: var(--secondary);">2. Tích hợp Tương lai (Future Integration)</h3>
-                    <p style="color: #a1b2c3;">Thách thức cốt lõi nằm ở việc duy trì tính logic và khách quan tuyệt đối. Trong tương lai, hệ thống kỹ năng này sẽ được tích hợp vào quy trình phân tích định lượng (SPSS/Jamovi) để đo lường chính xác các chỉ số tương tác thương hiệu điểm đến, đóng góp vào chiến lược thiết kế Công nghiệp Văn hóa bền vững.</p>
-                </div>
-                <!-- Chèn ảnh cá nhân siêu cute vào phần tổng kết -->
-                <img src="Aboutme4_removebg.PNG" alt="Profile pic" class="reflection-img">
-            </div>
+            <h3 style="color: var(--secondary);">> Năng lực Hệ thống (Technical Core)</h3>
+            <p style="color: #b0c4de;">Quá trình tham gia học phần đã chuyển dịch phương pháp làm việc từ khai thác thụ động sang quản trị hệ thống chủ động. Năng lực cốt lõi đạt được bao gồm làm chủ kỹ thuật Prompt Engineering phức hợp và vận hành quy trình số hóa tài liệu tuân thủ chuẩn mực học thuật nghiêm ngặt. <!--[span_44](start_span)[span_44](end_span) --></p>
+            
+            <h3 style="color: var(--secondary); margin-top: 30px;">> Tích hợp Tương lai (Future Integration)</h3>
+            <p style="color: #b0c4de;">Thách thức cốt lõi nằm ở việc duy trì tính logic và khách quan tuyệt đối. Trong tương lai, hệ thống kỹ năng này sẽ được tích hợp vào quy trình phân tích định lượng (SPSS/Jamovi) để đo lường chính xác các chỉ số tương tác thương hiệu điểm đến, đóng góp vào chiến lược thiết kế Công nghiệp Văn hóa bền vững. <!--[span_45](start_span)[span_45](end_span) --></p>
         </section>
 
     </div>
